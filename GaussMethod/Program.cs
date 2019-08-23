@@ -13,30 +13,43 @@ namespace ConsoleApp16
         //струми
         public void Read_I(double[] I)
         {
-            string file = @" C:\Users\Yariik\Desktop\Дкр\Струми.txt";
-
-
-            string[] curr = File.ReadAllLines(file);
-            for (int i = 0; i < n; i++)
-            {
-                I[i] = double.Parse(curr[i]);
-                Console.WriteLine("I{1}{0,10}", I[i], i);
+            string file = @" C:\Users\Yariik\Desktop\Дкр\Струми.txt";           // Вхідні дані - матриця струмів 
+            try                                                                 // 0; 2; 5; 0; 0;
+            {                                                                   // 2; 0; 8; 2; 0;
+                string[] curr = File.ReadAllLines(file);                        // 5; 8; 0; 0; 3;
+                for (int i = 0; i < n; i++)                                     // 0; 2; 0; 0; 4;
+                {                                                               // 0; 0; 3; 4; 0;
+                    I[i] = double.Parse(curr[i]);
+                    Console.WriteLine("I{1}{0,10}", I[i], i);
+                }
             }
+            catch (Exception error)
+            {
+                Console.WriteLine("Error:\n У методi {0} - {1}", error.TargetSite, error.Message);
+            }
+            Console.ReadKey();
         }
         //опори
         public void Read_R(double[,] R)
         {
             string file = @" C:\Users\Yariik\Desktop\Дкр\Опори.txt";
-            string[] line = File.ReadAllLines(file);
-            for (int i = 0; i < n; i++)
-            {
-                string[] r = line[i].Split(';');
-                for (int j = 0; j < n; j++)
+            try
+            {                                                                   // Вхідні дані - матриця опорів
+                string[] line = File.ReadAllLines(file);
+                for (int i = 0; i < n; i++)
                 {
-                    R[i, j] = double.Parse(r[j]);
-                    Console.Write("{0,5:f2}", R[i, j]);
+                    string[] r = line[i].Split(';');
+                    for (int j = 0; j < n; j++)
+                    {
+                        R[i, j] = double.Parse(r[j]);
+                        Console.Write("{0,5:f2}", R[i, j]);
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine("Error:\nВ методi {0} - {1}", error.TargetSite, error.Message);
             }
         }
         //матриця провідностей
