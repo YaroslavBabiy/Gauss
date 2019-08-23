@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ConsoleApp16
+namespace ConsoleApp16                                                        //
 {
     class Program
     {
@@ -35,11 +35,11 @@ namespace ConsoleApp16
             string file = @" C:\Users\Yariik\Desktop\Дкр\Опори.txt";
             try
             {                                                                   // Вхідні дані - матриця опорів
-                string[] line = File.ReadAllLines(file);
-                for (int i = 0; i < n; i++)
-                {
-                    string[] r = line[i].Split(';');
-                    for (int j = 0; j < n; j++)
+                string[] line = File.ReadAllLines(file);                        // 0
+                for (int i = 0; i < n; i++)                                     // 3
+                {                                                               // -5
+                    string[] r = line[i].Split(';');                            // 4
+                    for (int j = 0; j < n; j++)                                 // 1
                     {
                         R[i, j] = double.Parse(r[j]);
                         Console.Write("{0,5:f2}", R[i, j]);
